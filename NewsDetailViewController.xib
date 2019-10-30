@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ohk-VV-iXN">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohk-VV-iXN">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="A2y-0J-WEb">
@@ -63,22 +63,20 @@
                         </wkWebView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="1Jh-Oz-Rvb" firstAttribute="leading" secondItem="swD-Rj-Pjt" secondAttribute="leading" constant="8" id="7DN-IJ-KHz"/>
-                        <constraint firstItem="swD-Rj-Pjt" firstAttribute="trailing" secondItem="1Jh-Oz-Rvb" secondAttribute="trailing" constant="8" id="A1E-kh-zoo"/>
-                        <constraint firstItem="swD-Rj-Pjt" firstAttribute="trailing" secondItem="PTL-gF-Ot4" secondAttribute="trailing" constant="8" id="Hpd-zI-UMm"/>
-                        <constraint firstItem="YeC-wA-Obi" firstAttribute="trailing" secondItem="swD-Rj-Pjt" secondAttribute="trailing" id="KoA-6R-EoA"/>
-                        <constraint firstItem="A2y-0J-WEb" firstAttribute="leading" secondItem="swD-Rj-Pjt" secondAttribute="leading" id="NGQ-6x-q0f"/>
+                        <constraint firstItem="1Jh-Oz-Rvb" firstAttribute="leading" secondItem="ohk-VV-iXN" secondAttribute="leading" constant="8" id="7DN-IJ-KHz"/>
+                        <constraint firstAttribute="trailing" secondItem="1Jh-Oz-Rvb" secondAttribute="trailing" constant="8" id="A1E-kh-zoo"/>
+                        <constraint firstAttribute="trailing" secondItem="PTL-gF-Ot4" secondAttribute="trailing" constant="8" id="Hpd-zI-UMm"/>
+                        <constraint firstItem="YeC-wA-Obi" firstAttribute="trailing" secondItem="ohk-VV-iXN" secondAttribute="trailing" id="KoA-6R-EoA"/>
+                        <constraint firstItem="A2y-0J-WEb" firstAttribute="leading" secondItem="ohk-VV-iXN" secondAttribute="leading" id="NGQ-6x-q0f"/>
                         <constraint firstItem="PTL-gF-Ot4" firstAttribute="top" secondItem="1Jh-Oz-Rvb" secondAttribute="bottom" constant="8" id="Qo4-6k-yPU"/>
-                        <constraint firstItem="A2y-0J-WEb" firstAttribute="trailing" secondItem="swD-Rj-Pjt" secondAttribute="trailing" id="VEi-4u-jxN"/>
+                        <constraint firstItem="A2y-0J-WEb" firstAttribute="trailing" secondItem="ohk-VV-iXN" secondAttribute="trailing" id="VEi-4u-jxN"/>
                         <constraint firstItem="1Jh-Oz-Rvb" firstAttribute="top" secondItem="A2y-0J-WEb" secondAttribute="bottom" constant="8" id="i8D-kb-y90"/>
-                        <constraint firstItem="YeC-wA-Obi" firstAttribute="bottom" secondItem="swD-Rj-Pjt" secondAttribute="bottom" id="k2I-Gq-FAN"/>
-                        <constraint firstItem="A2y-0J-WEb" firstAttribute="top" secondItem="swD-Rj-Pjt" secondAttribute="top" id="l1c-0X-ZWI"/>
+                        <constraint firstItem="YeC-wA-Obi" firstAttribute="bottom" secondItem="ohk-VV-iXN" secondAttribute="bottom" id="k2I-Gq-FAN"/>
+                        <constraint firstItem="A2y-0J-WEb" firstAttribute="top" secondItem="ohk-VV-iXN" secondAttribute="top" id="l1c-0X-ZWI"/>
                         <constraint firstItem="YeC-wA-Obi" firstAttribute="top" secondItem="PTL-gF-Ot4" secondAttribute="bottom" constant="8" id="pLP-0p-yT6"/>
-                        <constraint firstItem="YeC-wA-Obi" firstAttribute="leading" secondItem="swD-Rj-Pjt" secondAttribute="leading" id="qWD-fl-YAn"/>
-                        <constraint firstItem="PTL-gF-Ot4" firstAttribute="leading" secondItem="swD-Rj-Pjt" secondAttribute="leading" constant="8" id="r0C-8S-n0D"/>
+                        <constraint firstItem="YeC-wA-Obi" firstAttribute="leading" secondItem="ohk-VV-iXN" secondAttribute="leading" id="qWD-fl-YAn"/>
+                        <constraint firstItem="PTL-gF-Ot4" firstAttribute="leading" secondItem="ohk-VV-iXN" secondAttribute="leading" constant="8" id="r0C-8S-n0D"/>
                     </constraints>
-                    <viewLayoutGuide key="contentLayoutGuide" id="MPf-8U-fcO"/>
-                    <viewLayoutGuide key="frameLayoutGuide" id="swD-Rj-Pjt"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
