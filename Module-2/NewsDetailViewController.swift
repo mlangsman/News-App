@@ -19,12 +19,12 @@ class NewsDetailViewController: UIViewController, WKNavigationDelegate  {
     var author:String?
     
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-      
         titleLabel?.text = self.title
         authorLabel?.text = self.author
         
