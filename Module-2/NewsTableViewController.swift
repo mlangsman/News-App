@@ -29,13 +29,17 @@ class NewsTableViewController: UITableViewController {
         "Timmah"
     ]
     
+    var articles: [[String: Any]]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-         API.sharedInstance.requestArticles()
+         var articles = API.sharedInstance.requestArticles()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        
+        print("Tableview got articles: \(articles)")
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
