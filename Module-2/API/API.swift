@@ -51,7 +51,7 @@ class API
                 {
                     let json = try JSON(data: data)
                     
-                    print("JSON: \(json)")
+                    // print("JSON: \(json)")
                     
                     self.processArticles(json: json)
                 }
@@ -74,6 +74,61 @@ class API
     func processArticles(json: JSON)
     {
         print(json)
+        
+        var articles:[Article] = [Article]()
+        
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        for (key, item):(String, JSON) in json
+        {
+            var article = Article()
+            
+            if let title:String = item["title"].string {
+                article.title = title
+            }
+            
+            if let id:Int = item["id"].int {
+                article.id = id
+            }
+            
+            if let author:String = item["author"].string {
+                article.author = author
+            }
+            
+            if let content:String = item["content"].string {
+                article.content = content
+            }
+            
+            if let thumbnailURL:String = item["thumbnail"].string {
+                article.thumbnailURL = thumbnailURL
+            }
+            
+            if let articleURL:String = item["permalink"].string {
+                article.articleURL = articleURL
+            }
+            
+            if let excerpt:String = item["excerpt"].string {
+                article.excerpt = excerpt
+            }
+
+            if let dateString = item["date"].string,
+               let creationDate = dateFormatter.date(from: dateString)
+            {
+               
+                article.creationDate = creationDate
+            }
+            else
+            {
+                print ("error")
+            }
+            
+            
+            articles.append(article)
+        }
+        
+       print (articles)
+        
     }
     
     
