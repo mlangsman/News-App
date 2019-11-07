@@ -29,20 +29,33 @@ class NewsTableViewController: UITableViewController {
         "Timmah"
     ]
     
-    var articles: [[String: Any]]?
+    // var articles: [[String: Any]]?
+    var articles: [Article]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-         var articles = API.sharedInstance.requestArticles()
+        API.sharedInstance.requestArticles()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onArticlesReceived(notification:)), name: API.articlesReceivedNotification, object: nil)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
-        // print("Tableview got articles: \(articles)")
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @objc func onArticlesReceived(notification: Notification)
+    {
+        if let articles:[Article] = notification.object as? [Article]
+        {
+            print ("**** BOOM:\n \(articles)")
+            self.articles = articles
+            self.tableView.reloadData()
+            
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -76,8 +89,14 @@ class NewsTableViewController: UITableViewController {
         
         // populate cell
         
-        cell!.textLabel?.text = titles[indexPath.row]
-        cell!.detailTextLabel?.text = authors[indexPath.row]
+         // cell!.textLabel?.text = titles[indexPath.row]
+         // cell!.detailTextLabel?.text = authors[indexPath.row]
+        
+        if let article = self.articles?[indexPath.row]
+        {
+            cell!.textLabel?.text = article.title
+            cell!.detailTextLabel?.text = article.author
+        }
 
         return cell!
     }

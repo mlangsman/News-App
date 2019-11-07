@@ -14,31 +14,17 @@ private let _API_SharedInstance = API()
 
 class API
 {
-    static var articles: [[String: Any]]?
+    //static var articles: [[String: Any]]?
+    static var articles: [Article]?
     
     static let Feed_JSON_URL:URL = URL(string: "https://learnappmaking.com/feed/json")!
+    
+    static let articlesReceivedNotification = Notification.Name("articlesReceived")
     
     // Singleton
     class var sharedInstance: API
     {
         return _API_SharedInstance
-    }
-    
-    func requestArticlesCustom() -> [[String: Any]]?
-    {
-        Alamofire.request(API.Feed_JSON_URL).responseJSON {response in
-            debugPrint(response)
-        
-            if let jsonResponse = response.value as? [[String: Any]]
-            {
-                debugPrint("Tiger is \(jsonResponse[1]["title"]!)")
-                API.articles = jsonResponse
-            }
-            
-        }
-        
-         return API.articles
-        
     }
     
     func requestArticles() -> Void
@@ -127,7 +113,15 @@ class API
             articles.append(article)
         }
         
-       print (articles)
+        print (articles)
+    
+        if articles.count > 0
+        {
+            NotificationCenter.default.post(name: API.articlesReceivedNotification, object: articles)
+        }
+        
+        // API.articles = articles
+        
         
     }
     
