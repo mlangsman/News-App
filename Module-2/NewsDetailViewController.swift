@@ -16,22 +16,48 @@ class NewsDetailViewController: UIViewController, WKNavigationDelegate  {
     @IBOutlet weak var authorLabel:UILabel?
     @IBOutlet weak var webView:WKWebView?
     @IBOutlet weak var heightConstraint:NSLayoutConstraint?
-    var author:String?
+    
+    var content:String = ""
+    
+    var article:Article?
     
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        if article == nil {
+            return
+        }
 
         // Do any additional setup after loading the view.
         
-        titleLabel?.text = self.title
-        authorLabel?.text = self.author
+        // titleLabel?.text = self.title
+        // authorLabel?.text = self.author
         
+        self.title = article?.title
+        titleLabel?.text = article?.title
+        authorLabel?.text = article?.author
+        
+        imageView?.image = UIImage(contentsOfFile: <#T##String#>
+
         webView?.navigationDelegate = self
+        webView?.scrollView.isScrollEnabled = false
         
-        let request = URLRequest(url: URL(string: "https://learnappmaking.com/lipsum.html")!)
-        webView?.load(request)
+        // let request = URLRequest(url: URL(string: "https://learnappmaking.com/lipsum.html")!)
+        // webView?.load(request)
+        
+        webView?.loadHTMLString("""
+            <html>
+                <head>
+                <style>body { font-family: -apple-system, Helvetica; sans-serif; }</style>
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                </head>
+                <body>
+                    \(article!.content)
+                </body>
+            </html>
+        """, baseURL: nil)
         
     }
     
