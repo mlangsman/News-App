@@ -50,7 +50,7 @@ class NewsTableViewController: UITableViewController {
     {
         if let articles:[Article] = notification.object as? [Article]
         {
-            print ("**** BOOM:\n \(articles)")
+            // print ("**** BOOM:\n \(articles)")
             self.articles = articles
             self.tableView.reloadData()
             
@@ -73,7 +73,6 @@ class NewsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
         
@@ -89,9 +88,6 @@ class NewsTableViewController: UITableViewController {
         
         // populate cell
         
-         // cell!.textLabel?.text = titles[indexPath.row]
-         // cell!.detailTextLabel?.text = authors[indexPath.row]
-        
         if let article = self.articles?[indexPath.row]
         {
             cell!.textLabel?.text = article.title
@@ -106,17 +102,9 @@ class NewsTableViewController: UITableViewController {
         
         var detailVC:NewsDetailViewController = NewsDetailViewController(nibName: "NewsDetailViewController", bundle: nil)
         
-        // detailVC.title = titles[indexPath.row]
-        // detailVC.author = authors[indexPath.row]
-        
-     
-        
         if let article = self.articles?[indexPath.row]
         {
             detailVC.article = article
-            //detailVC.title = article.title
-            //detailVC.author = article.author
-            //detailVC.content = article.content
         }
         
         navigationController?.pushViewController(detailVC, animated: true)

@@ -59,7 +59,7 @@ class API
     
     func processArticles(json: JSON)
     {
-        print(json)
+        // print(json)
         
         var articles:[Article] = [Article]()
         

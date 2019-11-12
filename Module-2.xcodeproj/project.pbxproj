@@ -24,7 +24,7 @@
 		41E09D7C3D2FA0AAEE149318 /* Pods-Module-2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Module-2.release.xcconfig"; path = "Target Support Files/Pods-Module-2/Pods-Module-2.release.xcconfig"; sourceTree = "<group>"; };
 		814864AE544674AC9EAC378D /* Pods-Module-2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Module-2.debug.xcconfig"; path = "Target Support Files/Pods-Module-2/Pods-Module-2.debug.xcconfig"; sourceTree = "<group>"; };
 		93A26D30765E71C9B4A52DFB /* Pods_Module_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Module_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F18142F2369CD2300135035 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		9F18142F2369CD2300135035 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F181432236ACD4400135035 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		9FB215E0237015FB006FE66D /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		9FDB15902342303C005F1F3E /* Module-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Module-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };

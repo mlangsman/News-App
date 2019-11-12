@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import Alamofire
 
 class NewsDetailViewController: UIViewController, WKNavigationDelegate  {
     
@@ -29,17 +30,15 @@ class NewsDetailViewController: UIViewController, WKNavigationDelegate  {
         if article == nil {
             return
         }
-
-        // Do any additional setup after loading the view.
         
-        // titleLabel?.text = self.title
-        // authorLabel?.text = self.author
+        // Remove placeholder image
+        self.imageView?.image = nil
         
+        
+        // Set content from article
         self.title = article?.title
         titleLabel?.text = article?.title
         authorLabel?.text = article?.author
-        
-        imageView?.image = UIImage(contentsOfFile: <#T##String#>
 
         webView?.navigationDelegate = self
         webView?.scrollView.isScrollEnabled = false
@@ -58,6 +57,21 @@ class NewsDetailViewController: UIViewController, WKNavigationDelegate  {
                 </body>
             </html>
         """, baseURL: nil)
+    
+        // Get thumbnauil image
+        
+        if let  thumbnailURL = URL(string: article!.thumbnailURL)
+        {
+            Alamofire.request(thumbnailURL).responseData { response in
+            
+                if let data = response.result.value
+                {
+                    self.imageView?.image = UIImage(data: data)
+                }
+
+            }
+        }
+            
         
     }
     
