@@ -58,7 +58,7 @@ class NewsDetailViewController: UIViewController, WKNavigationDelegate  {
             </html>
         """, baseURL: nil)
     
-        // Get thumbnauil image
+        // Get and display thumbnail image
         
         if let  thumbnailURL = URL(string: article!.thumbnailURL)
         {
