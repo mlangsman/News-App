@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 private let _API_SharedInstance = API()
 
@@ -109,11 +110,22 @@ class API
                 print ("error")
             }
             
+            let realm = try! Realm()
+
+            // Write article to Realm database. If it exists, update it
+            try! realm.write {
+                realm.add(article, update: .modified)
+            }
+            
+            // Get all articles from the DB
+            let realmArticles = realm.objects(Article.self)
+            print("Realm: \(realmArticles.count)")
             
             articles.append(article)
         }
         
-        print (articles)
+        // print (articles)
+        
     
         if articles.count > 0
         {
