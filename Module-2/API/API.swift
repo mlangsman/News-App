@@ -16,7 +16,8 @@ private let _API_SharedInstance = API()
 class API
 {
     //static var articles: [[String: Any]]?
-    static var articles: [Article]?
+    // static var articles: [Article]?
+    //static var realmArticles:Results<Article>?
     
     static let Feed_JSON_URL:URL = URL(string: "https://learnappmaking.com/feed/json")!
     
@@ -63,6 +64,8 @@ class API
         // print(json)
         
         var articles:[Article] = [Article]()
+        
+        // var realmArticles = Results<Article>
         
         var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -113,23 +116,30 @@ class API
             let realm = try! Realm()
 
             // Write article to Realm database. If it exists, update it
-            try! realm.write {
-                realm.add(article, update: .modified)
-            }
             
-            // Get all articles from the DB
-            let realmArticles = realm.objects(Article.self)
-            print("Realm: \(realmArticles.count)")
+            do {
+                try realm.write() {
+                    print("Committing write...")
+                    realm.add(article, update: .modified)
+                }
+            }
+            catch (let e)
+            {
+                print("Realm Error: \(e)")
+            }
             
             articles.append(article)
         }
         
         // print (articles)
-        
+        // Get all articles from the DB
+        let realm = try! Realm()
+        let realmArticles = realm.objects(Article.self)
+        print("Realm: \(realmArticles.count)")
     
-        if articles.count > 0
+        if realmArticles.count > 0
         {
-            NotificationCenter.default.post(name: API.articlesReceivedNotification, object: articles)
+            NotificationCenter.default.post(name: API.articlesReceivedNotification, object: nil)
         }
         
         // API.articles = articles

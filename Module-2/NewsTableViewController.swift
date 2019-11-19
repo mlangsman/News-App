@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NewsTableViewController: UITableViewController {
-
+    
     var titles:[String] = [
         "Blah blah blah",
         "Lorem Ipsum",
@@ -29,8 +30,16 @@ class NewsTableViewController: UITableViewController {
         "Timmah"
     ]
     
-    // var articles: [[String: Any]]?
-    var articles: [Article]?
+    var articles: Results<Article>
+    {
+        get {
+            // Query Realm
+            let realm = try! Realm()
+            return realm.objects(Article.self)
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,14 +57,7 @@ class NewsTableViewController: UITableViewController {
     
     @objc func onArticlesReceived(notification: Notification)
     {
-        if let articles:[Article] = notification.object as? [Article]
-        {
-            // print ("**** BOOM:\n \(articles)")
-            self.articles = articles
-            self.tableView.reloadData()
-            
-        }
-        
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -88,12 +90,17 @@ class NewsTableViewController: UITableViewController {
         
         // populate cell
         
-        if let article = self.articles?[indexPath.row]
+       /*  if let article = self.articles?[indexPath.row]
         {
             cell!.textLabel?.text = article.title
             cell!.detailTextLabel?.text = article.author
         }
+  */
+        let article = self.articles[indexPath.row]
 
+        cell!.textLabel?.text = article.title
+        cell!.detailTextLabel?.text = article.author
+        
         return cell!
     }
     
@@ -102,10 +109,8 @@ class NewsTableViewController: UITableViewController {
         
         var detailVC:NewsDetailViewController = NewsDetailViewController(nibName: "NewsDetailViewController", bundle: nil)
         
-        if let article = self.articles?[indexPath.row]
-        {
-            detailVC.article = article
-        }
+        let article = self.articles[indexPath.row]
+        detailVC.article = article
         
         navigationController?.pushViewController(detailVC, animated: true)
       
